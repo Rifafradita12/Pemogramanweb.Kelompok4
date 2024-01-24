@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Direktori Masjid</title>
+    <!-- Link -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+
+    <style>
+      /* Home */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        position: relative;
+        z-index: 1;
+      }
+
+      .text-nav {
+        font-weight: bold;
+        padding-top: 12px;
+      }
+
+      .home {
+        position: relative;
+        height: calc(100vh - 80px);
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        background-image: url("img/bintang.png");
+        background-size: cover;
+      }
+
+      .home img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-80%, -46%);
+        width: 750px;
+        opacity: 1;
+      }
+
+      .btn-outline-primary {
+        color: hwb(34 9% 24%); /* Default Bootstrap blue color */
+        border-color: hwb(34 9% 24%);
+      }
+
+      .btn-primary {
+        background-color: hwb(34 9% 24%);
+        border-color: hwb(34 9% 24%);
+      }
+
+      /* Additional styles if needed */
+      .btn-outline-primary:hover {
+        background-color: hwb(34 9% 24%);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background-color: hwb(
+          34 9% 24%
+        ); /* Darker shade of blue for hover effect */
+        border-color: hwb(34 9% 24%);
+      }
+
+      .navbar img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .navbar-brand {
+        padding: 0;
+      }
+
+      .home-text {
+        background-color: #ffefef;
+        width: 510px;
+        height: 230px;
+        border-radius: 10%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        padding-top: 50px;
+        position: absolute;
+        right: 0;
+        top: 20%;
+        text-align: center;
+        color: #000000;
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+
+      .home-subtext {
+        position: absolute;
+        right: 3%;
+        top: 37%;
+        text-align: right;
+        color: #000000;
+        font-size: 18px;
+      }
+
+      /* berita */
+
+      /* Data Masjid */
+      .section-title {
+        text-align: center;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: row;
+        height: 240px;
+      }
+
+      .card img {
+        max-width: 450px;
+        height: 300px;
+      }
+
+      .card-body {
+        margin-left: 20px;
+      }
+
+      /* about */
+
+      /* slider */
+      .container {
+        max-width: 1200px;
+        width: 95%;
+      }
+      .slider-wrapper {
+        position: relative;
+      }
+      .slider-wrapper .slide-button {
+        position: absolute;
+        top: 50%;
+        outline: none;
+        border: none;
+        height: 50px;
+        width: 50px;
+        z-index: 5;
+        color: #fff;
+        display: flex;
+        cursor: pointer;
+        font-size: 2.2rem;
+        background: #000;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transform: translateY(-50%);
+      }
+      .slider-wrapper .slide-button:hover {
+        background: #404040;
+      }
+      .slider-wrapper .slide-button#prev-slide {
+        left: -25px;
+        display: none;
+      }
+      .slider-wrapper .slide-button#next-slide {
+        right: -25px;
+      }
+      .slider-wrapper .image-list {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 18px;
+        font-size: 0;
+        list-style: none;
+        margin-bottom: 30px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .slider-wrapper .image-list::-webkit-scrollbar {
+        display: none;
+      }
+      .slider-wrapper .image-list .image-item {
+        width: 325px;
+        height: 400px;
+        object-fit: cover;
+      }
+      .container .slider-scrollbar {
+        height: 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .slider-scrollbar .scrollbar-track {
+        background: #ccc;
+        width: 100%;
+        height: 2px;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        position: relative;
+      }
+      .slider-scrollbar:hover .scrollbar-track {
+        height: 4px;
+      }
+      .slider-scrollbar .scrollbar-thumb {
+        position: absolute;
+        background: #000;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        height: 100%;
+        cursor: grab;
+        border-radius: inherit;
+      }
+      .slider-scrollbar .scrollbar-thumb:active {
+        cursor: grabbing;
+        height: 8px;
+        top: -2px;
+      }
+      .slider-scrollbar .scrollbar-thumb::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -10px;
+        bottom: -10px;
+      }
+
+      /* media */
+      @media (max-width: 768px) {
+        /* navbar */
+        .home img {
+          width: 84%;
+          top: 72%;
+          transform: translate(-50%, -50%);
+        }
+        .home-text {
+          width: 65%;
+          height: 35%;
+          font-size: 1.2em;
+        }
+        .home-subtext {
+          top: 35%;
+          font-size: 14px;
+        }
+        /* berita */
+
+        /* data masjid */
+        .card img {
+          height: 300px;
+          padding-top: 30px;
+        }
+      }
+      .hover-effect {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .hover-effect:hover {
+        transform: scale(0.75);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Home -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.jpg" alt="logo" class="logo" width="80px" />
+        </a>
+        <p class="text-nav">Direktori Masjid</p>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="berita.html">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="data_masjid.html">Data Masjid</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="formRegisMasjid.html">Registrasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tentang Kami</a>
+            </li>
+          </ul>
+          <div class="button">
+            <a href="login3.html">
+              <button
+                type="button"
+                class="btn btn-outline-primary me-2 hover-effect"
+              >
+                Login
+              </button>
+            </a>
+            <a href="regis.html">
+              <button type="button" class="btn btn-primary hover-effect">
+                Register
+              </button>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section class="about">
+        <h2 class="float-start ms-5 mt-5">Profil Masjid Istiqlal</h2>
+        <div class="container" style="padding-top: 90px">
+          <h4 class="float-start">Galery</h4>
+          <div class="slider-wrapper">
+            <button
+              id="prev-slide"
+              class="slide-button material-symbols-rounded"
+            >
+              chevron_left
+            </button>
+            <ul class="image-list">
+              <img class="image-item" src="img/istql1.jpg" alt="img-1" />
+              <img class="image-item" src="img/istql2.jpg" alt="img-2" />
+              <img class="image-item" src="img/istql3.jpg" alt="img-3" />
+              <img class="image-item" src="img/istql4.jpg" alt="img-4" />
+              <img class="image-item" src="img/istql5.jpg" alt="img-5" />
+              <img class="image-item" src="img/istql6.jpg" alt="img-6" />
+              <img class="image-item" src="img/istql7.jpg" alt="img-7" />
+              <img class="image-item" src="img/istql8.jpg" alt="img-8" />
+              <img class="image-item" src="img/istql9.jpg" alt="img-9" />
+              <img class="image-item" src="img/istql10.jpg" alt="img-10" />
+            </ul>
+            <button
+              id="next-slide"
+              class="slide-button material-symbols-rounded"
+            >
+              chevron_right
+            </button>
+          </div>
+          <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Deskripsi Fasilitas</h5>
+            <p class="card-text">
+              Masjid Istiqlal adalah masjid terbesar di Indonesia dan Asia
+              Tenggara. Masjid ini tidak hanya menjadi tempat ibadah, tetapi
+              juga menjadi pusat kegiatan umat Islam dan masyarakat umum.
+              Fasilitasnya yang lengkap, seperti ruang ibadah utama yang mampu
+              menampung hingga 200.000 jamaah, tempat wudhu yang tersebar di
+              berbagai titik, fasilitas umum, fasilitas pendidikan, fasilitas
+              budaya, dan fasilitas sosial, menjadikan masjid ini sebagai tempat
+              yang nyaman dan ramah bagi semua kalangan.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card d-flex">
+          <div class="card-body d-flex align-items-center">
+            <p class="card-text mr-3">
+              Alamat: Jl. Taman Wijaya Kusuma, Ps. Baru, Kecamatan Sawah Besar,
+              Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10710
+            </p>
+            <iframe
+              class="mr-3"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7055307264773!2d106.83139!3d-6.170170000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5ce68b5e01d%3A0xcafaf042d5840c6c!2sMasjid%20Istiqlal!5e0!3m2!1sid!2sid!4v1705882187353!5m2!1sid!2sid"
+              width="150"
+              height="150"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="float-start ms-5 mt-5">Testimony & Komentar</h2>
+
+    <div class="d-inline-block card mb-3 mt-5" style="max-width: 400px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://lh3.googleusercontent.com/a-/ALV-UjU7lMwtj-DQJuAh5zQej2AlhRfPZHLurjSl1Aqp0zGcIagV=w81-h81-p-rp-mo-ba6-br100"
+            class="img-fluid rounded-start"
+            alt="1"
+            style="width: 100px; height: 100px"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title">T. yunianto</h6>
+            <p class="card-text small">
+              Masjid termegah ikon muslim Indonesia menjadi destinasi wisata
+              bagi wisatawan domestik dari seluruh Indonesia bila sedang di
+              jakarta Luas adem bersih Semoga menjadi taman2 surga N pusat
+              kajian islam sesuai Al Quran n Sunnah Semoga tetap terjaga
+              perawatannya
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-inline-block card mb-3 mt-5" style="max-width: 400px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://lh3.googleusercontent.com/a-/ALV-UjVYc5C-SVboM4buIpZSmJ0oHa0d25gpXZ0vITa5sAb6dRTJ=w81-h81-p-rp-mo-ba3-br100"
+            class="img-fluid rounded-start"
+            alt="2"
+            style="width: 100px; height: 100px"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title">Mutohharoh Pusrianto</h6>
+            <p class="card-text small">
+              Masjid yang penuh sejarah dan selalu jadi favorit tiap liburan.
+              Posisinya di tengah kota , strategis untuk pengguna kendaraan umum
+              seperti Transjakarta maupun kereta. Cukup jalan kaki dari shelter
+              juanda. Tersedia bis tingkat trans wisata gratis yang akan
+              mengajak kita keliling sekitar Monas,HI sampai PIK.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-inline-block card mb-3 mt-5" style="max-width: 400px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="https://lh3.googleusercontent.com/a-/ALV-UjUUzOA21rnv1BLPFefnhnLLxvYGwl5IALghd--CexLFiR4=w81-h81-p-rp-mo-ba3-br100"
+            class="img-fluid rounded-start"
+            alt="3"
+            style="width: 100px; height: 100px"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h6 class="card-title">Andreee</h6>
+            <p class="card-text small">
+              Fasilitas lengkap, masjidnya sangat megah, di depan pintu masuk
+              masjid (al-Fatah) banyak yang jual makanan & minuman, bahkan ada
+              ruang baca & toko buku di lantai pertama. Masjid ini letaknya di
+              belakang Monumen Nasional dan berhadapan langsung dengan Gereja
+              Katedral.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav nav-tabs justify-content-center m-5">
+      <li class="nav-item">
+        <a
+          class="nav-link btn-primary"
+          aria-current="page"
+          href="data_masjid.html"
+          data-bs-toggle="tab"
+          >Data Masjid Istiqlal</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="data1_masjid.html" data-bs-toggle="tab"
+          >Data Masjid Cut Meutia</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="data2_masjid.html" data-bs-toggle="tab"
+          >Data Masjid Agung Al Azhar</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="data3_masjid.html" data-bs-toggle="tab"
+          >Masjid Ramlie Musofa</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="data4_masjid.html" data-bs-toggle="tab"
+          >Masjid Jami AL-Hurriyah</a
+        >
+      </li>
+    </ul>
+
+    <script>
+      const initSlider = () => {
+        const imageList = document.querySelector(".slider-wrapper .image-list");
+        const slideButtons = document.querySelectorAll(
+          ".slider-wrapper .slide-button"
+        );
+        const sliderScrollbar = document.querySelector(
+          ".container .slider-scrollbar"
+        );
+        const scrollbarThumb =
+          sliderScrollbar.querySelector(".scrollbar-thumb");
+        const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+        // Handle scrollbar thumb drag
+        scrollbarThumb.addEventListener("mousedown", (e) => {
+          const startX = e.clientX;
+          const thumbPosition = scrollbarThumb.offsetLeft;
+          const maxThumbPosition =
+            sliderScrollbar.getBoundingClientRect().width -
+            scrollbarThumb.offsetWidth;
+
+          // Update thumb position on mouse move
+          const handleMouseMove = (e) => {
+            const deltaX = e.clientX - startX;
+            const newThumbPosition = thumbPosition + deltaX;
+
+            // Ensure the scrollbar thumb stays within bounds
+            const boundedPosition = Math.max(
+              0,
+              Math.min(maxThumbPosition, newThumbPosition)
+            );
+            const scrollPosition =
+              (boundedPosition / maxThumbPosition) * maxScrollLeft;
+
+            scrollbarThumb.style.left = `${boundedPosition}px`;
+            imageList.scrollLeft = scrollPosition;
+          };
+
+          // Remove event listeners on mouse up
+          const handleMouseUp = () => {
+            document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseup", handleMouseUp);
+          };
+
+          // Add event listeners for drag interaction
+          document.addEventListener("mousemove", handleMouseMove);
+          document.addEventListener("mouseup", handleMouseUp);
+        });
+
+        // Slide images according to the slide button clicks
+        slideButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const direction = button.id === "prev-slide" ? -1 : 1;
+            const scrollAmount = imageList.clientWidth * direction;
+            imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+          });
+        });
+
+        // Show or hide slide buttons based on scroll position
+        const handleSlideButtons = () => {
+          slideButtons[0].style.display =
+            imageList.scrollLeft <= 0 ? "none" : "flex";
+          slideButtons[1].style.display =
+            imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+        };
+
+        // Update scrollbar thumb position based on image scroll
+        const updateScrollThumbPosition = () => {
+          const scrollPosition = imageList.scrollLeft;
+          const thumbPosition =
+            (scrollPosition / maxScrollLeft) *
+            (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+          scrollbarThumb.style.left = `${thumbPosition}px`;
+        };
+
+        // Call these two functions when image list scrolls
+        imageList.addEventListener("scroll", () => {
+          updateScrollThumbPosition();
+          handleSlideButtons();
+        });
+      };
+
+      window.addEventListener("resize", initSlider);
+      window.addEventListener("load", initSlider);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
